@@ -1,4 +1,5 @@
 from django.db import models
+from skills.models import Skill
 
 
 class Job(models.Model):
@@ -18,8 +19,7 @@ class Job(models.Model):
     company_id = models.CharField(max_length=60)
     # contact_ids = models.ManyToManyField(Contact)
     contact_ids = models.CharField(max_length=60)
-    # skill_ids = models.ManyToManyField(Skill)
-    skill_ids = models.CharField(max_length=60)
+    skills = models.ManyToManyField(Skill)
 
     def __str__(self):
         return f"Job: {self.title}@{self.company_id}"
